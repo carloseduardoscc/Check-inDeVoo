@@ -1,13 +1,24 @@
 package br.com.ciaaerea.domain.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Voo {
-    private Aeronave aeronave;
-    private List<Reserva> reservas;
+    private final Aeronave aeronave;
+    private final List<Reserva> reservas;
+    private final Rota rota;
 
-    public Voo(Aeronave aeronave) {
+    {
+        reservas = new ArrayList<>();
+    }
+
+    public Voo(Aeronave aeronave, Rota rota) {
         this.aeronave = aeronave;
+        this.rota = rota;
+    }
+
+    public Rota getRota() {
+        return rota;
     }
 
     public Aeronave getAeronave() {
