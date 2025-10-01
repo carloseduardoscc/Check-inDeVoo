@@ -9,11 +9,11 @@ public final class Aeronave {
         this.capacidade = capacidade;
     }
 
-    public String getModelo() {
-        return modelo;
-    }
-
     public int getCapacidade() {
         return capacidade;
+    }
+
+    public String getModelo() {
+        return modelo;
     }
 }

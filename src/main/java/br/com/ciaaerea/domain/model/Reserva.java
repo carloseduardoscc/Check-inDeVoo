@@ -16,5 +16,15 @@ public class Reserva {
     public void cancelar(){}
     public void embarcar(){}
 
-    public StatusReserva getStatus(){return status;}
+    public Passageiro getPassageiro() {
+        return passageiro;
+    }
+
+    public Voo getVoo() {
+        return voo;
+    }
+
+    public StatusReserva getStatus() {
+        return status;
+    }
 }

@@ -10,6 +10,11 @@ public final class Passageiro extends Pessoa{
         this.documento = documento;
     }
 
-    public String getCpf(){return cpf;}
-    public String getDocumento() {return documento;}
+    public String getCpf() {
+        return cpf;
+    }
+
+    public String getDocumento() {
+        return documento;
+    }
 }
