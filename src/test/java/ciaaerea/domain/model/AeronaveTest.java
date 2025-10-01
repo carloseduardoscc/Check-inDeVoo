@@ -1,0 +1,18 @@
+package ciaaerea.domain.model;
+
+import br.com.ciaaerea.domain.model.Aeronave;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+public class AeronaveTest {
+    @Test
+    public void deveInstanciarAeronaveCorretamente(){
+        Aeronave aeronave = new Aeronave("Boeing 737", 215);
+
+        assertAll(
+                ()->assertEquals("Boeing 737", aeronave.getModelo()),
+                ()->assertEquals(215, aeronave.getCapacidade())
+        );
+    }
+}

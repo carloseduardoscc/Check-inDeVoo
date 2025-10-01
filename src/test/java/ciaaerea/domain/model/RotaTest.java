@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class RotaTest {
 
     @Test
-    public void deveCadastrarRotaCorretamente(){
+    public void deveInstanciarRotaCorretamente(){
         Rota rota = new Rota("EUA", "China");
 
         assertAll(
