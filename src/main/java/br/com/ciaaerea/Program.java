@@ -4,6 +4,7 @@ import br.com.ciaaerea.domain.model.Aeronave;
 import br.com.ciaaerea.domain.model.Passageiro;
 import br.com.ciaaerea.domain.model.Rota;
 import br.com.ciaaerea.repositories.Repository;
+import br.com.ciaaerea.repositories.inMemory.AeronaveRepository;
 import br.com.ciaaerea.repositories.inMemory.RotaRepository;
 
 import java.util.Scanner;
@@ -11,6 +12,7 @@ import java.util.Scanner;
 public class Program {
 
     private static Repository<Rota> rotaRepo = new RotaRepository();
+    private static Repository<Aeronave> aeronaveRepo = new AeronaveRepository();
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
@@ -20,7 +22,7 @@ public class Program {
                 "█─███▀█─▄─██─▄█▀█─███▀██─▄▀██████████─███─█▄▀─█████─██─██─▄█▀████▄▀▄██─██─█─██─█\n" +
                 "▀▄▄▄▄▄▀▄▀▄▀▄▄▄▄▄▀▄▄▄▄▄▀▄▄▀▄▄▀▀▀▀▀▀▀▀▄▄▄▀▄▄▄▀▀▄▄▀▀▀▄▄▄▄▀▀▄▄▄▄▄▀▀▀▀▀▄▀▀▀▄▄▄▄▀▄▄▄▄▀";
 
-        String opcoesMenuString = "\n1 - Cadastrar Rota\n" +
+        String opcoesMenuString = "\n1 - Cadastrar Rota\n2 - Cadastrar Aeronave\n" +
                 "-> ";
 
         System.out.print(logoString);
@@ -37,6 +39,15 @@ public class Program {
                 Rota rota = new Rota(origem, destino);
 
                 rotaRepo.add(rota);
+                break;
+            case "2":
+                System.out.print("Digite o modelo: ");
+                String modelo = scan.nextLine();
+                System.out.print("Digite a capacidade: ");
+                int capacidade = Integer.parseInt(scan.nextLine());
+                Aeronave aeronave = new Aeronave(modelo, capacidade);
+
+                aeronaveRepo.add(aeronave);
                 break;
         }
     }
