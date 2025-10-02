@@ -18,9 +18,9 @@ public class Program {
     private static Repository<Voo> vooRepo = new VooRepository();
 
     public static void main(String[] args) {
+        inicializarDadosTeste(rotaRepo, aeronaveRepo, vooRepo);
         while (true) {
 
-            inicializarDadosTeste(rotaRepo, aeronaveRepo, vooRepo);
 
             Scanner scan = new Scanner(System.in);
 
