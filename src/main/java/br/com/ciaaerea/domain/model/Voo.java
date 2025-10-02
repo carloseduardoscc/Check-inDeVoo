@@ -17,6 +17,10 @@ public class Voo {
         this.rota = rota;
     }
 
+    public int getReservasLivres(){
+        return aeronave.getCapacidade() - reservas.size();
+    }
+
     public Rota getRota() {
         return rota;
     }
@@ -27,5 +31,13 @@ public class Voo {
 
     public List<Reserva> getReservas() {
         return reservas;
+    }
+
+    @Override
+    public String toString() {
+        return "Voo" +
+                "\nrota - " + rota +
+                "\naeronave - " + aeronave +
+                "\nreservasLivres - " + getReservasLivres();
     }
 }

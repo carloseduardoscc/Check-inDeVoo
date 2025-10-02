@@ -20,4 +20,9 @@ public class RotaRepository implements Repository<Rota> {
     public List<Rota> findAll() {
         return new ArrayList<>(rotas);
     }
+
+    @Override
+    public Rota findByIndex(int index) {
+        return rotas.get(index);
+    }
 }
