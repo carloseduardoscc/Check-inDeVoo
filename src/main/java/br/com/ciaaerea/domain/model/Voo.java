@@ -36,8 +36,8 @@ public class Voo {
     @Override
     public String toString() {
         return "Voo" +
-                "\nrota - " + rota +
-                "\naeronave - " + aeronave +
-                "\nreservasLivres - " + getReservasLivres();
+                "\n" + rota +
+                "\n" + aeronave +
+                "\nReservas Livres - " + getReservasLivres();
     }
 }

@@ -30,7 +30,7 @@ public class Program {
                     "█─███▀█─▄─██─▄█▀█─███▀██─▄▀██████████─███─█▄▀─█████─██─██─▄█▀████▄▀▄██─██─█─██─█\n" +
                     "▀▄▄▄▄▄▀▄▀▄▀▄▄▄▄▄▀▄▄▄▄▄▀▄▄▀▄▄▀▀▀▀▀▀▀▀▄▄▄▀▄▄▄▀▀▄▄▀▀▀▄▄▄▄▀▀▄▄▄▄▄▀▀▀▀▀▄▀▀▀▄▄▄▄▀▄▄▄▄▀" ;
 
-            String opcoesMenuString = String.format("\nCADASTRAR:\n\t%3d - %s\n\t%3d - %s\n\t%3d - %s\nLISTAR:\n\t%3d - %s\n\n------->",1,"Rota",2,"Aeronave",3,"Voo",4,"Voo");
+            String opcoesMenuString = String.format("\nCADASTRAR:\n\t%3d - %s\n\t%3d - %s\n\t%3d - %s\nLISTAR:\n\t%3d - %s\n\n-------> ",1,"Rota",2,"Aeronave",3,"Voo",4,"Voo");
 
             System.out.print(logoString);
             System.out.print(opcoesMenuString);
