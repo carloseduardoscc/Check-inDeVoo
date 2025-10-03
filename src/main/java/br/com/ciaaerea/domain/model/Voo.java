@@ -35,8 +35,7 @@ public class Voo {
 
     @Override
     public String toString() {
-        return "Voo" +
-                "\n" + rota +
+        return  rota +
                 "\n" + aeronave +
                 "\nReservas Livres - " + getReservasLivres();
     }
