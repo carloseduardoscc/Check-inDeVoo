@@ -11,7 +11,7 @@ public class VooTest {
         Rota rota = new Rota("EUA", "China");
         Aeronave aeronave = new Aeronave("Boeing 737", 215);
         Voo voo = new Voo(aeronave, rota);
-        Passageiro passageiro = new Passageiro("Eduardo Costa", "5231236802", "RG");
+        Passageiro passageiro = new Passageiro("Eduardo Costa", "52312368302", "RG");
         Reserva reserva = new Reserva(passageiro, voo);
         voo.getReservas().add(reserva);
 

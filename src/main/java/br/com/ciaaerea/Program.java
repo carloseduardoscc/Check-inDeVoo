@@ -5,13 +5,11 @@ import br.com.ciaaerea.UI.MenuOption;
 import br.com.ciaaerea.UI.MenuOptionType;
 import br.com.ciaaerea.UI.ConsoleInput;
 import br.com.ciaaerea.domain.model.Aeronave;
+import br.com.ciaaerea.domain.model.Passageiro;
 import br.com.ciaaerea.domain.model.Rota;
 import br.com.ciaaerea.domain.model.Voo;
 import br.com.ciaaerea.repositories.Repository;
-import br.com.ciaaerea.repositories.inMemory.AeronaveRepository;
-import br.com.ciaaerea.repositories.inMemory.RepositorySeed;
-import br.com.ciaaerea.repositories.inMemory.RotaRepository;
-import br.com.ciaaerea.repositories.inMemory.VooRepository;
+import br.com.ciaaerea.repositories.inMemory.*;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -20,6 +18,7 @@ public class Program {
     private static Repository<Rota> rotaRepo = new RotaRepository();
     private static Repository<Aeronave> aeronaveRepo = new AeronaveRepository();
     private static Repository<Voo> vooRepo = new VooRepository();
+    private static Repository<Passageiro> passRepo = new PassageiroRepository();
 
     public static void main(String[] args) {
         RepositorySeed.seed(rotaRepo, aeronaveRepo, vooRepo);
@@ -76,6 +75,20 @@ public class Program {
                     Voo voo = new Voo(aeronave, rota);
 
                     vooRepo.add(voo);
+                })
+        );
+        mainMenu.addOption(
+                new MenuOption("Passageiro", MenuOptionType.CADASTRAR, () -> {
+                    System.out.print("Digite o CPF: ");
+                    String cpf = ConsoleInput.waitUserString(true);
+                    System.out.print("Digite o nome: ");
+                    String nome = ConsoleInput.waitUserString(true);
+                    System.out.print("Digite um documento válido: ");
+                    String documento = ConsoleInput.waitUserString(true);
+
+                    Passageiro passageiro = new Passageiro(nome, cpf, documento);
+
+                    passRepo.add(passageiro);
                 })
         );
         mainMenu.addOption(
