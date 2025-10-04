@@ -19,6 +19,6 @@ public final class Aeronave {
 
     @Override
     public String toString() {
-        return String.format("Aeronave [ modelo - %s | capacidade - %d ]", getModelo(), getCapacidade());
+        return String.format("modelo - %s | capacidade - %d", getModelo(), getCapacidade());
     }
 }

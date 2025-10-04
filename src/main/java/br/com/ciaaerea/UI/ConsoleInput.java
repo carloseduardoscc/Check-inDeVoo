@@ -46,10 +46,11 @@ public class ConsoleInput {
         while (true) {
             try {
                 int num = scan.nextInt();
-                scan.nextLine();
                 return num;
             } catch (InputMismatchException e) {
                 System.out.print("Somente números\n\nTente novamente: ");
+            }finally {
+                scan.nextLine();
             }
         }
     }
@@ -61,8 +62,7 @@ public class ConsoleInput {
 
     public static <T> T waitUserChoiceFromList(List<T> list) {
         AtomicInteger idx = new AtomicInteger(1);
-        System.out.println("Selecione a rota:");
-        list.forEach(x -> System.out.printf("%3d - %10s\n", idx.getAndIncrement(), x.toString()));
+        list.forEach(x -> System.out.printf("\n%3d\n%10s\n", idx.getAndIncrement(), x.toString()));
         return list.get(ConsoleInput.waitUserInteger(1, list.size()) - 1);
     }
 }
