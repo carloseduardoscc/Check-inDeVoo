@@ -9,8 +9,15 @@ public final class Passageiro extends Pessoa{
     public Passageiro(String nome, String cpf, String documento){
         super(nome);
         validarCPF(cpf);
+        validarDocumento(documento);
         this.cpf = cpf;
         this.documento = documento;
+    }
+
+    private void validarDocumento(String documento) {
+        if (documento == null || documento.isBlank()){
+            throw new BussinesViolationException("Documento não pode estar em branco");
+        }
     }
 
     private void validarCPF(String cpf) {
