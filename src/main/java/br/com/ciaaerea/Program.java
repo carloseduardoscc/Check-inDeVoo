@@ -80,11 +80,11 @@ public class Program {
         mainMenu.addOption(
                 new MenuOption("Passageiro", MenuOptionType.CADASTRAR, () -> {
                     System.out.print("Digite o CPF: ");
-                    String cpf = ConsoleInput.waitUserString();
+                    String cpf = ConsoleInput.waitUserString(true);
                     System.out.print("Digite o nome: ");
-                    String nome = ConsoleInput.waitUserString();
+                    String nome = ConsoleInput.waitUserString(true);
                     System.out.print("Digite um documento válido: ");
-                    String documento = ConsoleInput.waitUserString();
+                    String documento = ConsoleInput.waitUserString(true);
 
                     Passageiro passageiro = new Passageiro(nome, cpf, documento);
 

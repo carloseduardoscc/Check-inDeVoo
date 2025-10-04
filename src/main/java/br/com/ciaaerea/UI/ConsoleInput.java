@@ -10,6 +10,20 @@ public class ConsoleInput {
         return scan.nextLine().trim();
     }
 
+    public static String waitUserString(boolean validateNotBlank) {
+        while(true){
+            try {
+                String input = scan.nextLine().trim();
+                if (validateNotBlank && (input.isBlank())) {
+                    throw new IllegalArgumentException("Não esperado texto em branco");
+                }
+                return input;
+            }catch (IllegalArgumentException e){
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
     public static int waitUserInteger(int min, int max) {
         if (min >= max) throw new IllegalArgumentException("Limite mínimo não deve ser maior que máximo");
 
