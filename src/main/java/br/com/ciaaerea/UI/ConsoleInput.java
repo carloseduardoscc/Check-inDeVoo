@@ -1,7 +1,12 @@
 package br.com.ciaaerea.UI;
 
+import br.com.ciaaerea.domain.model.Rota;
+
+import java.util.Collection;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ConsoleInput {
     private static Scanner scan = new Scanner(System.in);
@@ -11,14 +16,14 @@ public class ConsoleInput {
     }
 
     public static String waitUserString(boolean validateNotBlank) {
-        while(true){
+        while (true) {
             try {
-                String input = scan.nextLine().trim();
+                String input = waitUserString();
                 if (validateNotBlank && (input.isBlank())) {
                     throw new IllegalArgumentException("Não esperado texto em branco");
                 }
                 return input;
-            }catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }
@@ -52,8 +57,15 @@ public class ConsoleInput {
         }
     }
 
-    public static void waitUserEnter(){
+    public static void waitUserEnter() {
         System.out.print("\nDê enter para continuar...");
         scan.nextLine();
+    }
+
+    public static <T> T waitUserChoiceFromList(List<T> list) {
+        AtomicInteger idx = new AtomicInteger(1);
+        System.out.println("Selecione a rota:");
+        list.forEach(x -> System.out.printf("%3d - %10s\n", idx.getAndIncrement(), x.toString()));
+        return list.get(ConsoleInput.waitUserInteger(1, list.size()) - 1);
     }
 }
