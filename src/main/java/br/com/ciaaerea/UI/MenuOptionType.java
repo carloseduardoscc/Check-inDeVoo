@@ -1,8 +1,9 @@
 package br.com.ciaaerea.UI;
 
 public enum MenuOptionType {
-    CADASTRAR("Cadastrar"),
-    LISTAR("Listar"),
+    CADASTRO("Cadastro"),
+    RESERVAS("Reservas"),
+    VISUALIZAR("Visualizar"),
     NONE("");
     String name;
 

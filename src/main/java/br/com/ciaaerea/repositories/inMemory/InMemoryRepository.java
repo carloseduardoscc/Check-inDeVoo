@@ -9,7 +9,7 @@ public abstract class InMemoryRepository <T> implements Repository<T> {
     List<T> list = new ArrayList<>();
 
     @Override
-    public void add(T T) {
+    public void save(T T) {
         list.add(T);
     }
 

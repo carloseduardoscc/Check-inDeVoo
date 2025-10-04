@@ -11,12 +11,14 @@ public class RepositorySeed {
      * @param aeronaveRepo
      * @param vooRepo
      */
-    public static void seed(Repository<Rota> rotaRepo, Repository<Aeronave> aeronaveRepo, Repository<Voo> vooRepo) {
-        rotaRepo.add(new Rota("EUA", "China"));
-        rotaRepo.add(new Rota("England", "EUA"));
-        aeronaveRepo.add(new Aeronave("Boeing 737", 215));
-        aeronaveRepo.add(new Aeronave("Airbus A380", 615));
-        vooRepo.add(new Voo(aeronaveRepo.findByIndex(0), rotaRepo.findByIndex(0)));
-        vooRepo.add(new Voo(aeronaveRepo.findByIndex(1), rotaRepo.findByIndex(1)));
+    public static void seed(Repository<Rota> rotaRepo, Repository<Aeronave> aeronaveRepo, Repository<Voo> vooRepo, Repository<Passageiro> passageiroRepo, Repository<Reserva> reservaRepo) {
+        rotaRepo.save(new Rota("EUA", "China"));
+        rotaRepo.save(new Rota("England", "EUA"));
+        aeronaveRepo.save(new Aeronave("Boeing 737", 215));
+        aeronaveRepo.save(new Aeronave("Airbus A380", 615));
+        vooRepo.save(new Voo(aeronaveRepo.findByIndex(0), rotaRepo.findByIndex(0)));
+        vooRepo.save(new Voo(aeronaveRepo.findByIndex(1), rotaRepo.findByIndex(1)));
+        passageiroRepo.save(new Passageiro("Carlos Eduardo de Souza Coelho Cavaletto", "50301236502", "454545454"));
+        passageiroRepo.save(new Passageiro("Gabriel Borsário", "63215454203", "686868686"));
     }
 }
