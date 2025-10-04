@@ -1,5 +1,7 @@
 package br.com.ciaaerea.domain.model;
 
+import br.com.ciaaerea.UI.StringFormatter;
+
 import java.util.ArrayList;
 import java.util.List;
 

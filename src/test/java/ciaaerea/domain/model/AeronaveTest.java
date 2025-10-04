@@ -3,7 +3,8 @@ package ciaaerea.domain.model;
 import br.com.ciaaerea.domain.model.Aeronave;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AeronaveTest {
     @Test

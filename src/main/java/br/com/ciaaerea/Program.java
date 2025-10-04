@@ -1,13 +1,10 @@
 package br.com.ciaaerea;
 
+import br.com.ciaaerea.UI.ConsoleInput;
 import br.com.ciaaerea.UI.Menu;
 import br.com.ciaaerea.UI.MenuOption;
 import br.com.ciaaerea.UI.MenuOptionType;
-import br.com.ciaaerea.UI.ConsoleInput;
-import br.com.ciaaerea.domain.model.Aeronave;
-import br.com.ciaaerea.domain.model.Passageiro;
-import br.com.ciaaerea.domain.model.Rota;
-import br.com.ciaaerea.domain.model.Voo;
+import br.com.ciaaerea.domain.model.*;
 import br.com.ciaaerea.repositories.Repository;
 import br.com.ciaaerea.repositories.inMemory.*;
 

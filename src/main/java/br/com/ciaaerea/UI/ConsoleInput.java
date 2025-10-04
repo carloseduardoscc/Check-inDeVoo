@@ -1,8 +1,5 @@
 package br.com.ciaaerea.UI;
 
-import br.com.ciaaerea.domain.model.Rota;
-
-import java.util.Collection;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;

@@ -1,8 +1,6 @@
 package br.com.ciaaerea.repositories.inMemory;
 
-import br.com.ciaaerea.domain.model.Aeronave;
-import br.com.ciaaerea.domain.model.Rota;
-import br.com.ciaaerea.domain.model.Voo;
+import br.com.ciaaerea.domain.model.*;
 import br.com.ciaaerea.repositories.Repository;
 
 public class RepositorySeed {
