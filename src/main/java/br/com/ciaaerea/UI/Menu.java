@@ -1,5 +1,7 @@
 package br.com.ciaaerea.UI;
 
+import br.com.ciaaerea.domain.exceptions.BussinesViolationException;
+
 import java.util.*;
 
 public class Menu {
@@ -29,7 +31,12 @@ public class Menu {
             System.out.print("-----> ");
             MenuOption chosedOption = options.get(ConsoleInput.waitUserInteger(1, options.size())-1);
             ConsoleOptions.clearConsole();
-            chosedOption.run();
+            try {
+                chosedOption.run();
+            } catch (BussinesViolationException e) {
+                System.err.printf("VIOLAÇÃO DE REGRA: %s\n",e.getMessage());
+                ConsoleInput.waitUserEnter();
+            }
             lastOption = chosedOption;
         } while (!isExit(lastOption));
     }

@@ -1,5 +1,7 @@
 package br.com.ciaaerea.domain.model;
 
+import br.com.ciaaerea.domain.exceptions.BussinesViolationException;
+
 public final class Passageiro extends Pessoa{
     private final String cpf;
     private String documento;
@@ -13,7 +15,7 @@ public final class Passageiro extends Pessoa{
 
     private void validarCPF(String cpf) {
         if (cpf == null || cpf.length() != 11){
-            throw new IllegalArgumentException("CPF inválido");
+            throw new BussinesViolationException("CPF deve ter 11 caracteres");
         }
     }
 

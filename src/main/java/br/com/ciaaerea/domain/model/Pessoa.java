@@ -1,5 +1,7 @@
 package br.com.ciaaerea.domain.model;
 
+import br.com.ciaaerea.domain.exceptions.BussinesViolationException;
+
 public abstract class Pessoa {
     protected String nome;
 
@@ -10,7 +12,7 @@ public abstract class Pessoa {
 
     private void validarNome(String nome) {
         if (nome == null || nome.isBlank()) {
-            throw new IllegalArgumentException("Nome do passageiro não pode estar em branco");
+            throw new BussinesViolationException("Nome do passageiro não pode estar em branco");
         }
     }
 
