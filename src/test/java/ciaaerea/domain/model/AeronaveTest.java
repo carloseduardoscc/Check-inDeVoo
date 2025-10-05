@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class AeronaveTest {
     @Test
     public void deveInstanciarAeronaveCorretamente(){
-        Aeronave aeronave = new Aeronave("Boeing 737", 215);
+        Aeronave aeronave = new Aeronave("Boeing 737", 215, 6);
 
         assertAll(
                 ()->assertEquals("Boeing 737", aeronave.getModelo()),

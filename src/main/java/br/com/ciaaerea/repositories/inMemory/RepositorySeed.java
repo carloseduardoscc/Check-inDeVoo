@@ -14,8 +14,8 @@ public class RepositorySeed {
     public static void seed(Repository<Rota> rotaRepo, Repository<Aeronave> aeronaveRepo, Repository<Voo> vooRepo, Repository<Passageiro> passageiroRepo, Repository<Reserva> reservaRepo) {
         rotaRepo.save(new Rota("EUA", "China"));
         rotaRepo.save(new Rota("England", "EUA"));
-        aeronaveRepo.save(new Aeronave("Boeing 737", 215));
-        aeronaveRepo.save(new Aeronave("Airbus A380", 615));
+        aeronaveRepo.save(new Aeronave("Boeing 737", 215, 4));
+        aeronaveRepo.save(new Aeronave("Airbus A380", 615, 6));
         vooRepo.save(new Voo(aeronaveRepo.findByIndex(0), rotaRepo.findByIndex(0)));
         vooRepo.save(new Voo(aeronaveRepo.findByIndex(1), rotaRepo.findByIndex(1)));
         passageiroRepo.save(new Passageiro("Carlos Eduardo de Souza Coelho Cavaletto", "50301236502", "454545454"));

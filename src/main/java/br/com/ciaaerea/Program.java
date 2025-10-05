@@ -48,7 +48,9 @@ public class Program {
                     String modelo = ConsoleInput.waitUserString();
                     System.out.print("Digite a capacidade: ");
                     int capacidade = ConsoleInput.waitUserInteger();
-                    Aeronave aeronave = new Aeronave(modelo, capacidade);
+                    System.out.print("Digite a número de assentos por fileira: ");
+                    int colunas = ConsoleInput.waitUserInteger();
+                    Aeronave aeronave = new Aeronave(modelo, capacidade, colunas);
                     System.out.println("\nAeronave cadastrada com sucesso!");
                     ConsoleInput.waitUserEnter();
 

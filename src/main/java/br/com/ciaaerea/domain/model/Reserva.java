@@ -5,9 +5,11 @@ import br.com.ciaaerea.domain.enums.StatusReserva;
 public class Reserva {
     private final Passageiro passageiro;
     private final Voo voo;
+    private Assento assento;
     private StatusReserva status = StatusReserva.ABERTA;
 
-    public Reserva(Passageiro passageiro, Voo voo){
+    public Reserva(Passageiro passageiro, Voo voo, Assento assento){
+        this.assento = assento;
         voo.getReservas().add(this);
         this.passageiro = passageiro;
         this.voo = voo;
@@ -30,5 +32,15 @@ public class Reserva {
 
     public StatusReserva getStatus() {
         return status;
+    }
+
+    @Override
+    public String toString() {
+        return "Reserva{" +
+                "passageiro=" + passageiro +
+                ", voo=" + voo +
+                ", assento=" + assento +
+                ", status=" + status +
+                '}';
     }
 }
