@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class ConsoleInput {
+public final class ConsoleInput {
     private static Scanner scan = new Scanner(System.in);
 
     public static String waitUserString() {
@@ -27,7 +27,7 @@ public class ConsoleInput {
     }
 
     public static int waitUserInteger(int min, int max) {
-        if (min >= max) throw new IllegalArgumentException("Limite mínimo não deve ser maior que máximo");
+        if (min > max) throw new IllegalArgumentException("Limite mínimo não deve ser maior que o máximo");
 
         while (true) {
             try {
