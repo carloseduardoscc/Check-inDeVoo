@@ -1,5 +1,6 @@
 package br.com.ciaaerea.domain.model;
 
+import br.com.ciaaerea.UI.StringFormatter;
 import br.com.ciaaerea.domain.exceptions.BussinesViolationException;
 
 public final class Passageiro extends Pessoa{
@@ -32,5 +33,14 @@ public final class Passageiro extends Pessoa{
 
     public String getDocumento() {
         return documento;
+    }
+
+    @Override
+    public String toString() {
+//        return String.format("Passageiro [ Nome: %s ] CPF: %S, Documento: %s ]",nome, cpf,documento);
+        return
+                StringFormatter.formatProp("Nome", 9, nome) +
+                        StringFormatter.formatProp("CPF", 9, cpf) +
+                        StringFormatter.formatProp("Documento", 9, documento);
     }
 }

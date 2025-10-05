@@ -8,13 +8,17 @@ public class Reserva {
     private StatusReserva status = StatusReserva.ABERTA;
 
     public Reserva(Passageiro passageiro, Voo voo){
+        voo.getReservas().add(this);
         this.passageiro = passageiro;
         this.voo = voo;
     }
 
-    public void confirmar (){}
-    public void cancelar(){}
-    public void embarcar(){}
+    public void setStatus(StatusReserva novoStatus){
+        this.status.validarTransicao(novoStatus);
+        this.status = novoStatus;
+    }
+
+
 
     public Passageiro getPassageiro() {
         return passageiro;

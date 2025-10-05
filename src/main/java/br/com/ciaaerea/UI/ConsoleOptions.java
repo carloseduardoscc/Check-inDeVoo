@@ -1,7 +1,5 @@
 package br.com.ciaaerea.UI;
 
-import java.util.Scanner;
-
 public class ConsoleOptions {
     public static void clearConsole() {
         try {

@@ -1,6 +1,5 @@
 package br.com.ciaaerea.repositories.inMemory;
 
-import br.com.ciaaerea.domain.model.Aeronave;
 import br.com.ciaaerea.repositories.Repository;
 
 import java.util.ArrayList;
@@ -10,7 +9,7 @@ public abstract class InMemoryRepository <T> implements Repository<T> {
     List<T> list = new ArrayList<>();
 
     @Override
-    public void add(T T) {
+    public void save(T T) {
         list.add(T);
     }
 

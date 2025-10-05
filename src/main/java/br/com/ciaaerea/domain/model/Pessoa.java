@@ -19,4 +19,9 @@ public abstract class Pessoa {
     public String getNome() {
         return this.nome;
     }
+
+    @Override
+    public String toString() {
+        return String.format("[ %s ]",nome);
+    }
 }

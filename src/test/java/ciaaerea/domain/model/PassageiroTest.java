@@ -2,12 +2,11 @@ package ciaaerea.domain.model;
 
 import br.com.ciaaerea.domain.exceptions.BussinesViolationException;
 import br.com.ciaaerea.domain.model.Passageiro;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PassageiroTest {
     @ParameterizedTest

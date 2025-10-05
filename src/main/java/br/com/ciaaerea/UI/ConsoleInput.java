@@ -1,9 +1,11 @@
 package br.com.ciaaerea.UI;
 
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class ConsoleInput {
+public final class ConsoleInput {
     private static Scanner scan = new Scanner(System.in);
 
     public static String waitUserString() {
@@ -11,21 +13,21 @@ public class ConsoleInput {
     }
 
     public static String waitUserString(boolean validateNotBlank) {
-        while(true){
+        while (true) {
             try {
-                String input = scan.nextLine().trim();
+                String input = waitUserString();
                 if (validateNotBlank && (input.isBlank())) {
                     throw new IllegalArgumentException("Não esperado texto em branco");
                 }
                 return input;
-            }catch (IllegalArgumentException e){
+            } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }
     }
 
     public static int waitUserInteger(int min, int max) {
-        if (min >= max) throw new IllegalArgumentException("Limite mínimo não deve ser maior que máximo");
+        if (min > max) throw new IllegalArgumentException("Limite mínimo não deve ser maior que o máximo");
 
         while (true) {
             try {
@@ -44,16 +46,23 @@ public class ConsoleInput {
         while (true) {
             try {
                 int num = scan.nextInt();
-                scan.nextLine();
                 return num;
             } catch (InputMismatchException e) {
                 System.out.print("Somente números\n\nTente novamente: ");
+            }finally {
+                scan.nextLine();
             }
         }
     }
 
-    public static void waitUserEnter(){
+    public static void waitUserEnter() {
         System.out.print("\nDê enter para continuar...");
         scan.nextLine();
+    }
+
+    public static <T> T waitUserChoiceFromList(List<T> list) {
+        AtomicInteger idx = new AtomicInteger(1);
+        list.forEach(x -> System.out.printf("\n%3d\n%10s\n", idx.getAndIncrement(), x.toString()));
+        return list.get(ConsoleInput.waitUserInteger(1, list.size()) - 1);
     }
 }
