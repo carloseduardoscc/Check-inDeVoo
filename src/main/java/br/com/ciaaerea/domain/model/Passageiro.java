@@ -3,6 +3,8 @@ package br.com.ciaaerea.domain.model;
 import br.com.ciaaerea.UI.StringFormatter;
 import br.com.ciaaerea.domain.exceptions.BussinesViolationException;
 
+import java.util.Objects;
+
 public final class Passageiro extends Pessoa{
     private final String cpf;
     private String documento;
@@ -42,5 +44,17 @@ public final class Passageiro extends Pessoa{
                 StringFormatter.formatProp("Nome", 9, nome) +
                         StringFormatter.formatProp("CPF", 9, cpf) +
                         StringFormatter.formatProp("Documento", 9, documento);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Passageiro that = (Passageiro) o;
+        return Objects.equals(cpf, that.cpf) && Objects.equals(documento, that.documento);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cpf, documento);
     }
 }
