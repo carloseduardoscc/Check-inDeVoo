@@ -24,7 +24,13 @@ public final class Aeronave {
                 }
             }
         }
-        throw new AssentoIndisponivelException("Assento não disponível nesta aeronave");
+        throw new IllegalArgumentException("Assento não disponível nesta aeronave");
+    }
+
+    public boolean hasAssento(Assento assento){
+        return assentos.stream()
+                .flatMap(List::stream)
+                .anyMatch(a->a.equals(assento));
     }
 
     public List<List<Assento>> getAssentos() {

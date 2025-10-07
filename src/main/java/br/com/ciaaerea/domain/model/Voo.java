@@ -27,6 +27,13 @@ public class Voo {
     private void validateNovaReserva(Reserva reserva) {
         validateIfAssentoOfReservaIsLivre(reserva);
         validateUniqueReservaForPassageiro(reserva.getPassageiro());
+        validateAssento(reserva.getAssento());
+    }
+
+    private void validateAssento(Assento assento) {
+        if (!aeronave.hasAssento(assento)){
+            throw new IllegalArgumentException("Assento informado não é válido");
+        }
     }
 
     private void validateUniqueReservaForPassageiro(Passageiro passageiro) {
