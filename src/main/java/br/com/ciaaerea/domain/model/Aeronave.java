@@ -1,6 +1,9 @@
 package br.com.ciaaerea.domain.model;
 
+import br.com.ciaaerea.domain.exceptions.AssentoIndisponivelException;
+
 import java.util.List;
+import java.util.Optional;
 
 public final class Aeronave {
     private final String modelo;
@@ -11,6 +14,17 @@ public final class Aeronave {
         this.modelo = modelo;
         this.capacidade = capacidade;
         assentos = Assento.gerarLayoutDeAssentos(capacidade, assentosPorFileira);
+    }
+
+    public Assento findAssentoByCode(String code){
+        for(List<Assento> fileira : assentos){
+            for(Assento assento : fileira){
+                if (assento.getCode().equals(code)){
+                    return assento;
+                }
+            }
+        }
+        throw new AssentoIndisponivelException("Assento não disponível nesta aeronave");
     }
 
     public List<List<Assento>> getAssentos() {

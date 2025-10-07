@@ -1,14 +1,18 @@
 package br.com.ciaaerea;
 
-import br.com.ciaaerea.UI.ConsoleInput;
-import br.com.ciaaerea.UI.Menu;
-import br.com.ciaaerea.UI.MenuOption;
-import br.com.ciaaerea.UI.MenuOptionType;
+import br.com.ciaaerea.UI.*;
+import br.com.ciaaerea.domain.enums.StatusReserva;
+import br.com.ciaaerea.domain.exceptions.AssentoIndisponivelException;
 import br.com.ciaaerea.domain.model.*;
 import br.com.ciaaerea.repositories.Repository;
 import br.com.ciaaerea.repositories.inMemory.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 public class Program {
 
@@ -85,10 +89,23 @@ public class Program {
         );
         mainMenu.addOption(
                 new MenuOption("Nova reserva", MenuOptionType.RESERVAS, () -> {
-                    System.out.println("Selecione o voo:");
-                    Voo vooSelecionado = ConsoleInput.waitUserChoiceFromList(vooRepo.findAll());
-                    Passageiro passageiroSelecionado = ConsoleInput.waitUserChoiceFromList(passageiroRepo.findAll());
-                    Reserva novaReserva = new Reserva(passageiroSelecionado, vooSelecionado);
+                    Voo vooSelecionado = ConsoleInput.waitUserChoiceFromList(vooRepo.findAll(), "Selecione o voo");
+
+                    ConsoleOptions.clearConsole();
+                    Passageiro passageiroSelecionado = ConsoleInput.waitUserChoiceFromList(passageiroRepo.findAll(), "Selecione o passageiro");
+                    ConsoleOptions.clearConsole();
+
+                    System.out.println(assentosToString(vooSelecionado));
+                    System.out.print("Selecione o assento: ");
+                    Assento assentoSelecionado = vooSelecionado.getAeronave().findAssentoByCode(ConsoleInput.waitUserString());
+
+
+                    Reserva novaReserva = new Reserva(passageiroSelecionado, assentoSelecionado);
+                    reservaRepo.save(novaReserva);
+
+                    vooSelecionado.addReserva(novaReserva);
+
+
                     System.out.println("\nNova reserva cadastrada com sucesso!");
 
                     reservaRepo.save(novaReserva);
@@ -105,6 +122,23 @@ public class Program {
 
         mainMenu.open();
         System.out.println("Saindo do programa...");
+    }
+
+    private static String assentosToString(Voo voo) {
+        StringBuilder sb = new StringBuilder();
+        List<List<Assento>> assentos = voo.getAeronave().getAssentos();
+        for(List<Assento> fileira: assentos){
+            for(Assento assento : fileira){
+                List<Assento> assentosOcupados = voo.getReservas().stream().map(Reserva::getAssento).collect(Collectors.toCollection(ArrayList::new));
+                if(assentosOcupados.contains(assento)){
+                    sb.append(String.format(" [%4s] ","----"));
+                }else{
+                    sb.append(String.format(" [%4s] ",assento));
+                }
+            }
+            sb.append('\n');
+        }
+        return sb.toString();
     }
 
 

@@ -22,21 +22,22 @@ public class ReservaTest {
     Rota rota;
     Voo voo;
     Passageiro passageiro;
+    Assento assento;
 
     @BeforeEach
     public void setup() {
-        aeronave = aeronave = new Aeronave("Boeing 737", 215);
+        aeronave = aeronave = new Aeronave("Boeing 737", 215,6);
         rota = new Rota("England", "EUA");
         voo = new Voo(aeronave, rota);
         passageiro = new Passageiro("Carlos Eduardo de Souza Coelho Cavaletto", "50301236502", "454545454");
-
+        assento = aeronave.getAssentos().getFirst().getFirst();
 
     }
 
     @Test
     public void dadoInformacoesCorretasQuandoInstanciarNaoDeveLancarExcecao() {
         assertDoesNotThrow(() -> {
-            new Reserva(passageiro, voo);
+            new Reserva(passageiro, assento);
         });
     }
 
@@ -63,7 +64,7 @@ public class ReservaTest {
         @ParameterizedTest
         @MethodSource("sequenciasDeTransicaoNaoPermitidas")
         public void dadaSequenciaNaoPermitidaDeveLancarExcecao(List<StatusReserva> sequenciaStatus) {
-            Reserva reserva = new Reserva(passageiro, voo);
+            Reserva reserva = new Reserva(passageiro, assento);
             assertThrows(TransicaoInvalidaException.class, () -> {
                 sequenciaStatus.forEach(reserva::setStatus);
             });
@@ -84,7 +85,7 @@ public class ReservaTest {
         @ParameterizedTest
         @MethodSource("sequenciasDeTransicaoPermitidas")
         public void dadaSequenciaPermitidaNaoDeveLancarExcecao(List<StatusReserva> sequenciaStatus) {
-            Reserva reserva = new Reserva(passageiro, voo);
+            Reserva reserva = new Reserva(passageiro, assento);
             assertDoesNotThrow(() -> {
                 sequenciaStatus.forEach(reserva::setStatus);
             });

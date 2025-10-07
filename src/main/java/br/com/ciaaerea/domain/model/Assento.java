@@ -2,6 +2,7 @@ package br.com.ciaaerea.domain.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Assento {
     private final String fileira;
@@ -50,5 +51,17 @@ public class Assento {
     @Override
     public String toString() {
         return getCode();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Assento assento = (Assento) o;
+        return Objects.equals(fileira, assento.fileira) && Objects.equals(coluna, assento.coluna);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(fileira, coluna);
     }
 }
