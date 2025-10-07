@@ -1,5 +1,6 @@
 package br.com.ciaaerea.UI;
 
+import br.com.ciaaerea.UI.exceptions.ChoiceFromListCanceledException;
 import br.com.ciaaerea.domain.exceptions.BussinesViolationException;
 
 import java.util.ArrayList;
@@ -39,6 +40,7 @@ public class Menu {
             } catch (BussinesViolationException e) {
                 System.err.printf("VIOLAÇÃO DE REGRA: %s\n",e.getMessage());
                 ConsoleInput.waitUserEnter();
+            } catch (ChoiceFromListCanceledException e){
             }
             lastOption = chosedOption;
         } while (!isExit(lastOption));

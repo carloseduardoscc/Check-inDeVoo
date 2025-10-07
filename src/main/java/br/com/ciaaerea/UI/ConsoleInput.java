@@ -1,9 +1,9 @@
 package br.com.ciaaerea.UI;
 
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
-import java.util.concurrent.atomic.AtomicInteger;
+import br.com.ciaaerea.UI.exceptions.ChoiceFromListCanceledException;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 public final class ConsoleInput {
     private static Scanner scan = new Scanner(System.in);
@@ -42,6 +42,17 @@ public final class ConsoleInput {
         }
     }
 
+    public static String waitUserString(String regex) {
+        while (true) {
+            String input = scan.nextLine();
+            if (!input.matches(regex)) {
+                System.out.print("Opção inválida\n\nTente novamente: ");
+            } else {
+                return input;
+            }
+        }
+    }
+
     public static int waitUserInteger() {
         while (true) {
             try {
@@ -49,7 +60,7 @@ public final class ConsoleInput {
                 return num;
             } catch (InputMismatchException e) {
                 System.out.print("Somente números\n\nTente novamente: ");
-            }finally {
+            } finally {
                 scan.nextLine();
             }
         }
@@ -61,8 +72,37 @@ public final class ConsoleInput {
     }
 
     public static <T> T waitUserChoiceFromList(List<T> list) {
-        AtomicInteger idx = new AtomicInteger(1);
-        list.forEach(x -> System.out.printf("\n%3d\n%10s\n", idx.getAndIncrement(), x.toString()));
-        return list.get(ConsoleInput.waitUserInteger(1, list.size()) - 1);
+        List<String> toStrings = list.stream()
+                .map(T::toString)
+                .collect(Collectors.toCollection(ArrayList::new));
+
+        toStrings.addLast("CANCELAR");
+
+        ConsoleOutput.printList(toStrings);
+        int inputNum = ConsoleInput.waitUserInteger(1, toStrings.size());
+        boolean isCanceled = inputNum == toStrings.size();
+        if (isCanceled){
+            throw new ChoiceFromListCanceledException("Seleção cancelada");
+        }
+
+        return list.get(inputNum-1);
+    }
+
+    public static <T> T waitUserChoiceFromList(List<T> list, String title) {
+        List<String> toStrings = list.stream()
+                .map(T::toString)
+                .collect(Collectors.toCollection(ArrayList::new));
+
+        toStrings.addLast("CANCELAR");
+
+        ConsoleOutput.printList(toStrings, title);
+        System.out.print("\n-------> ");
+        int inputNum = ConsoleInput.waitUserInteger(1, toStrings.size());
+        boolean isCanceled = inputNum == toStrings.size();
+        if (isCanceled){
+            throw new ChoiceFromListCanceledException("Seleção cancelada");
+        }
+
+        return list.get(inputNum-1);
     }
 }

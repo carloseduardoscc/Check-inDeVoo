@@ -40,10 +40,11 @@ public class Program {
                     System.out.print("Digite o destino: ");
                     String destino = ConsoleInput.waitUserString();
                     Rota rota = new Rota(origem, destino);
-                    System.out.println("\nRota cadastrada com sucesso!");
-                    ConsoleInput.waitUserEnter();
 
                     rotaRepo.save(rota);
+
+                    System.out.println("\nRota cadastrada com sucesso!");
+                    ConsoleInput.waitUserEnter();
                 })
         );
         mainMenu.addOption(
@@ -55,22 +56,24 @@ public class Program {
                     System.out.print("Digite a número de assentos por fileira: ");
                     int colunas = ConsoleInput.waitUserInteger();
                     Aeronave aeronave = new Aeronave(modelo, capacidade, colunas);
+
+                    aeronaveRepo.save(aeronave);
+
                     System.out.println("\nAeronave cadastrada com sucesso!");
                     ConsoleInput.waitUserEnter();
 
-                    aeronaveRepo.save(aeronave);
                 })
         );
         mainMenu.addOption(
                 new MenuOption("Voo", MenuOptionType.CADASTRO, () -> {
                     Rota rota = ConsoleInput.waitUserChoiceFromList(rotaRepo.findAll());
                     Aeronave aeronave = ConsoleInput.waitUserChoiceFromList(aeronaveRepo.findAll());
-                    System.out.println("\nVoo cadastrado com sucesso!");
-                    ConsoleInput.waitUserEnter();
-
                     Voo voo = new Voo(aeronave, rota);
 
                     vooRepo.save(voo);
+
+                    System.out.println("\nVoo cadastrado com sucesso!");
+                    ConsoleInput.waitUserEnter();
                 })
         );
         mainMenu.addOption(
@@ -82,9 +85,11 @@ public class Program {
                     System.out.print("Digite um documento válido: ");
                     String documento = ConsoleInput.waitUserString(true);
                     Passageiro passageiro = new Passageiro(nome, cpf, documento);
-                    System.out.println("\nPassageiro cadastrado com sucesso!");
 
                     passageiroRepo.save(passageiro);
+
+                    System.out.println("\nPassageiro cadastrado com sucesso!");
+                    ConsoleInput.waitUserEnter();
                 })
         );
         mainMenu.addOption(
