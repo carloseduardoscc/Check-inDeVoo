@@ -112,16 +112,31 @@ public class Program {
 
 
                     System.out.println("\nNova reserva cadastrada com sucesso!");
-
-                    reservaRepo.save(novaReserva);
+                    ConsoleInput.waitUserEnter();
                 })
         );
         mainMenu.addOption(
-                new MenuOption("Voos disponíveis", MenuOptionType.VISUALIZAR, () -> {
-                    AtomicInteger idx = new AtomicInteger(1);
-                    vooRepo.findAll().forEach(x -> System.out.printf("%3d - %10s\n\n", idx.getAndIncrement(), x.toString()));
+                new MenuOption("Rotas", MenuOptionType.VISUALIZAR, () -> {
+                    ConsoleOutput.printList(rotaRepo.findAll(), "Rotas cadastradas");
                     ConsoleInput.waitUserEnter();
-
+                })
+        );
+        mainMenu.addOption(
+                new MenuOption("Aeronaves", MenuOptionType.VISUALIZAR, () -> {
+                    ConsoleOutput.printList(aeronaveRepo.findAll(), "Aeronaves cadastradas");
+                    ConsoleInput.waitUserEnter();
+                })
+        );
+        mainMenu.addOption(
+                new MenuOption("Voos", MenuOptionType.VISUALIZAR, () -> {
+                    ConsoleOutput.printList(vooRepo.findAll(), "Voos cadastrados");
+                    ConsoleInput.waitUserEnter();
+                })
+        );
+        mainMenu.addOption(
+                new MenuOption("Passageiros", MenuOptionType.VISUALIZAR, () -> {
+                    ConsoleOutput.printList(passageiroRepo.findAll(), "Passageiros cadastrados");
+                    ConsoleInput.waitUserEnter();
                 })
         );
 
