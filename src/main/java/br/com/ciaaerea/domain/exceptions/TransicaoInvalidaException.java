@@ -1,6 +1,6 @@
 package br.com.ciaaerea.domain.exceptions;
 
-public class TransicaoInvalidaException extends BussinesViolationException {
+public class TransicaoInvalidaException extends BusinessViolationException {
     public TransicaoInvalidaException(String message){
         super(message);
     }

@@ -1,0 +1,25 @@
+package br.com.ciaaerea.infra.repositories.inMemoryImplementation;
+
+import br.com.ciaaerea.infra.repositories.Repository;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class InMemoryRepository <T> implements Repository<T> {
+    List<T> list = new ArrayList<>();
+
+    @Override
+    public void save(T T) {
+        list.add(T);
+    }
+
+    @Override
+    public List<T> findAll() {
+        return new ArrayList<>(list);
+    }
+
+    @Override
+    public T findByIndex(int index) {
+        return list.get(index);
+    }
+}
