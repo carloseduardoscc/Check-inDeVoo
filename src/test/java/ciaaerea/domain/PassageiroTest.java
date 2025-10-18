@@ -1,7 +1,7 @@
 package ciaaerea.domain;
 
 import br.com.ciaaerea.domain.exceptions.BusinessViolationException;
-import br.com.ciaaerea.domain.Passageiro;
+import br.com.ciaaerea.domain.model.Passageiro;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 

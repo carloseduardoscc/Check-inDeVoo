@@ -1,6 +1,6 @@
 package ciaaerea.domain;
 
-import br.com.ciaaerea.domain.Aeronave;
+import br.com.ciaaerea.domain.model.Aeronave;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.assertAll;

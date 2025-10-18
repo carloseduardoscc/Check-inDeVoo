@@ -1,8 +1,12 @@
-package br.com.ciaaerea.domain;
+package br.com.ciaaerea.domain.model;
+
+import br.com.ciaaerea.domain.model.id.EntityID;
 
 import java.util.List;
 
 public final class Aeronave {
+    private EntityID id;
+
     private final String modelo;
     private final int capacidade;
     private final List<List<Assento>> assentos;

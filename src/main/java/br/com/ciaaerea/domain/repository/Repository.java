@@ -1,4 +1,4 @@
-package br.com.ciaaerea.infra.repositories;
+package br.com.ciaaerea.domain.repository;
 
 import java.util.List;
 

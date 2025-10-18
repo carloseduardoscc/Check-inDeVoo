@@ -1,4 +1,4 @@
-package br.com.ciaaerea.domain;
+package br.com.ciaaerea.domain.model;
 
 import java.util.ArrayList;
 import java.util.List;

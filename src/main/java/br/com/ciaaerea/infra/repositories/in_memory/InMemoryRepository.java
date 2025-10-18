@@ -1,11 +1,11 @@
-package br.com.ciaaerea.infra.repositories.inMemoryImplementation;
+package br.com.ciaaerea.infra.repositories.in_memory;
 
-import br.com.ciaaerea.infra.repositories.Repository;
+import br.com.ciaaerea.domain.repository.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class InMemoryRepository <T> implements Repository<T> {
+public class InMemoryRepository <T> implements Repository<T> {
     List<T> list = new ArrayList<>();
 
     @Override

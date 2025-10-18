@@ -1,7 +1,7 @@
-package br.com.ciaaerea.infra.repositories.inMemoryImplementation;
+package br.com.ciaaerea.infra.repositories.in_memory;
 
-import br.com.ciaaerea.domain.*;
-import br.com.ciaaerea.infra.repositories.Repository;
+import br.com.ciaaerea.domain.model.*;
+import br.com.ciaaerea.domain.repository.Repository;
 
 public class RepositorySeed {
 

@@ -1,6 +1,6 @@
 package br.com.ciaaerea;
 
-import br.com.ciaaerea.domain.Aeronave;
+import br.com.ciaaerea.domain.model.Aeronave;
 
 public class ProgramTest {
     public static void main(String[] args) {

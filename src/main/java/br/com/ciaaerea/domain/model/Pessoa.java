@@ -1,4 +1,4 @@
-package br.com.ciaaerea.domain;
+package br.com.ciaaerea.domain.model;
 
 import br.com.ciaaerea.domain.exceptions.BusinessViolationException;
 

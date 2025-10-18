@@ -1,8 +1,8 @@
 package ciaaerea.domain;
 
-import br.com.ciaaerea.domain.*;
 import br.com.ciaaerea.domain.enums.StatusReserva;
 import br.com.ciaaerea.domain.exceptions.TransicaoInvalidaException;
+import br.com.ciaaerea.domain.model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

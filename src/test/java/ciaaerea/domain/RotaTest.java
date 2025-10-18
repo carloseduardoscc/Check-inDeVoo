@@ -1,6 +1,6 @@
 package ciaaerea.domain;
 
-import br.com.ciaaerea.domain.Rota;
+import br.com.ciaaerea.domain.model.Rota;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
